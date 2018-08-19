@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
     .container { padding-left: 20px; padding-right: 20px; }
     .event-image { height: 100px; }
     a { cursor: pointer; }
+    a.add-session { float: right; }
   `]
 })
 export class EventDetailsComponent implements OnInit {
