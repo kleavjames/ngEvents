@@ -1,32 +1,39 @@
+import { IEvent } from './shared/event.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { EventService } from './shared';
 
 @Component({
-  template: `
-    <h1>New Event</h1>
-    <hr>
-    <div class="col-md-6">
-      <h3>[Create Event Form will go here]</h3>
-      <br>
-      <br>
-      <button type="submit" class="btn btn-primary">Save</button>
-      &nbsp;
-      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-    </div>
-  `,
+  templateUrl: './create-event.component.html',
   styles: [`
+    em { float: right; color: #ec5757; font-size: 14px; margin-top: 2px; }
+    .error input { background-color: #e3c3c5; }
+    .error ::-webkit-input-placeholder { color: #999; }
+    .error ::-moz-placeholder { color: #999; }
+    .error :-moz-placeholder { color: #999; }
+    .error :ms-input-placeholder { color: #999; }
   `]
 })
 export class CreateEventComponent implements OnInit {
   isDirty: boolean = true;
+  newEvent: any;
 
   constructor(
+    private eventService: EventService,
     private router: Router,
     private toastr: ToastrService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
+
+  saveEvent(eventData) {
+    this.eventService.saveEvent(eventData);
+    this.toastr.success('Event successfully created.');
+    this.isDirty = false;
+    this.router.navigate(['/events']);
+  }
 
   cancel(): void {
     this.router.navigate(['/events']);
