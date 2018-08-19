@@ -12,7 +12,8 @@ import {
   EventsListComponent,
   EventDetailsComponent,
   CreateEventComponent,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionListComponent
 } from './events/index';
 
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ import { Error404Component } from './errors/404.component';
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [
     BrowserModule,
