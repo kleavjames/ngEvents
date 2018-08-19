@@ -8,12 +8,12 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styles: [`
     .error-info { float: right; color: #ec5757; font-size: 14px; margin-top: 2px; }
-    label { font-size: 16px; font-weight: normal }
   `]
 })
 export class LoginComponent implements OnInit {
   userName: string;
   password: string;
+  mouseoverLogin: boolean;
 
   constructor(
     private authService: AuthService,

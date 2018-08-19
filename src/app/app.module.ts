@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -10,7 +11,8 @@ import {
   EventThumbnailComponent,
   EventsListComponent,
   EventDetailsComponent,
-  CreateEventComponent
+  CreateEventComponent,
+  CreateSessionComponent
 } from './events/index';
 
 import { AppComponent } from './app.component';
@@ -25,11 +27,14 @@ import { Error404Component } from './errors/404.component';
     NavbarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     ToastrModule.forRoot({
       preventDuplicates: true
