@@ -16,11 +16,18 @@ import {
   SessionListComponent,
   DurationPipe
 } from './events/index';
+import {
+  CollapsibleWellComponent,
+  JQ_TOKEN,
+  SimpleModalComponent,
+  ModalTriggerDirective
+} from './common/index';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
+
+const jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -34,7 +41,9 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     })
   ],
   providers: [
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    { provide: JQ_TOKEN, useValue: jQuery }
   ],
   bootstrap: [AppComponent]
 })

@@ -14,8 +14,6 @@ function sortByNameAsc(s1: ISession, s2: ISession): number {
 
 // sort by votes descending
 function sortByVotesDesc(s1: ISession, s2: ISession): number {
-  console.log('session 1: ', s1);
-  console.log('session 2: ', s2);
   return s2.voters.length - s1.voters.length;
 }
 
