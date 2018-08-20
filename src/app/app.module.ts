@@ -14,7 +14,9 @@ import {
   CreateEventComponent,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  ValidateLocationDirective
 } from './events/index';
 import {
   CollapsibleWellComponent,
@@ -43,7 +45,9 @@ const jQuery = window['$'];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent,
+    ValidateLocationDirective
   ],
   imports: [
     BrowserModule,
