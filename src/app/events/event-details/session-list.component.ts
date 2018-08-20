@@ -28,6 +28,7 @@ function sortByVotesDesc(s1: ISession, s2: ISession): number {
 export class SessionListComponent implements OnInit, OnChanges {
   @Input() sessions: ISession[];
   @Input() filteredBy: string;
+  @Input() eventId: number;
   @Input() sortedBy: string;
   visibleSessions: ISession[] = [];
 
@@ -57,9 +58,9 @@ export class SessionListComponent implements OnInit, OnChanges {
 
   toggleVote(sessionData: ISession) {
     if (this.userHasVoted(sessionData)) {
-      this.voterService.deleteVoter(sessionData, this.authService.currentUser.userName);
+      this.voterService.deleteVoter(this.eventId, sessionData, this.authService.currentUser.userName);
     } else {
-      this.voterService.addVoter(sessionData, this.authService.currentUser.userName);
+      this.voterService.addVoter(this.eventId, sessionData, this.authService.currentUser.userName);
     }
     if (this.sortedBy === 'votes') {
       this.visibleSessions.sort(sortByVotesDesc);
