@@ -24,9 +24,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   login(data) {
-    this.authService.loginUser(data.userName, data.password);
-    this.toastr.success('Successfully logged in.');
-    this.router.navigate(['/events']);
+    // this.authService.loginUser(data.userName, data.password);
+    this.authService.loginUser(data.userName, data.password)
+      .subscribe(res => {
+        if (!res) {
+          this.toastr.error('Invalid login info.');
+        } else {
+          this.toastr.success('You are successfully logged in.');
+          this.router.navigate(['/events']);
+        }
+      });
   }
 
   cancel() {

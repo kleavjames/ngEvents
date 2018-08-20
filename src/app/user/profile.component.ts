@@ -39,11 +39,22 @@ export class ProfileComponent implements OnInit {
 
   saveProfile(userData: IUser) {
     if (this.profileForm.valid) {
-      this.authService.updateCurrentUser(userData.firstName, userData.lastName);
-      this.router.navigate(['/events']);
+      this.authService.updateCurrentUser(userData.firstName, userData.lastName)
+        .subscribe(() => {
+          this.toastr.success('Profile saved.');
+          this.router.navigate(['/events']);
+        });
     } else {
       this.toastr.error('Failed to update profile.');
     }
+  }
+
+  logout() {
+    this.authService.userLogout()
+      .subscribe(() => {
+        this.toastr.success('Logout successfully');
+        this.router.navigate(['/user/login']);
+      });
   }
 
   validateFirstName() {
